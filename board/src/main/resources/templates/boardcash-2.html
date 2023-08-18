@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cash-2.css" type="text/css">
+    <link href="images/logo.png" rel="shortcut icon" type="image/x-icon" width="16px" height="16px">
+    <title>준비, 시장!</title>
+</head>
+
+<style>
+    body {
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    min-width: 100%;
+    position: relative;
+    font-family: "Pretendard";
+    margin: 0;
+}
+
+.wall {
+    width: 100%;
+    height: 84px;
+    flex-shrink: 0;
+    background: #00A863;
+    position: relative; /* 추가 */
+    z-index: 1;
+}
+
+.bottom-wall {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 6rem;
+    background: #F1F1F1;
+    position: fixed; /* 추가 */
+    z-index: 1;
+}
+
+.bottom-box {
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    height: 6rem;
+    width: 430px;
+    height: 84px;
+    background: #F1F1F1;
+    position: fixed; /* 추가 */
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bar {
+    margin-top: 7px;
+    cursor: pointer;
+}
+
+.bar-content {
+    margin-top: 10px;
+    color: #000;
+    font-family: "Pretendard";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.42px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.window {
+    min-height: 120vh;
+    width: 420px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    padding-bottom: 10vh;
+}
+
+.backbox{
+    background: #00A863;
+    width: 430px;
+    height: 84px;
+    position: absolute;
+    top: 0; /* 추가 */
+    left: 50%; /* 추가 */
+    transform: translateX(-50%); /* 추가 */
+    z-index: 2; /* 추가 */
+}
+
+.my {
+    position: absolute;
+    top: 31px;
+    left: 46px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1px;
+    color: #ffffff;
+}
+
+.back {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 23px;
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+
+
+/* 기본 세팅 */
+
+
+.tl {
+    margin-top: 123px;
+    padding-bottom: 188px;
+    position: absolute;
+}
+
+.example {
+    margin-top: 37px ;
+    margin-left: 36px;
+    width: 59px;
+    height: 26px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #00A863;
+}
+
+span {
+    margin-top: 7px;
+    margin-left: 11.5px;
+    color: #FFF;
+    font-family: "Pretendard";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.65px;
+}
+
+.container {
+    position: relative;
+    display: inline-block; /* Optional, adjust as needed */
+}
+
+.first-img {
+    margin-top: 10px;
+    margin-left: 23px;
+    width: 374px;
+    height: 230px;
+    border-radius: 10px;
+    background: #00A863;
+    display: block;
+    filter: brightness(0.4);
+}
+
+h2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 130px;
+    padding-left: 41px;
+    color: #FFF;
+    font-family: "Pretendard";
+    font-size: 23.228px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1.161px;
+}
+
+h4 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 170px;
+    padding-left: 45px;
+    color: #FFF;
+    font-family: "Pretendard";
+    font-size: 8.198px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.738px;
+    }
+
+.sakak {
+    margin-top: 10px;
+    margin-left: 23px;
+    width: 374px;
+    height: 171px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    border: 1px solid #00A863;
+}
+
+.boximg {
+    width: 137px;
+    height: 171px;
+    margin-left: -0.5px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+}
+
+.nemo {
+    margin-top: 16px;
+    margin-right: 170px;
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #00A863;
+    float: right;
+}
+
+.icon-img {
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 33px;
+    height: 33px;
+    flex-shrink: 0;
+}
+
+.star-img {
+    margin-left: 192px;
+    margin-top: 19px;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.title {
+    margin-top: 15px;
+    color: #00A863;
+    font-family: "Pretendard";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    position:absolute;
+}
+
+.number {
+    color: #00A863;
+    font-family: "Pretendard";
+    font-size: 7px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.35px;
+}
+
+.sun-1 {
+    margin-top: 40px;
+    width: 214px;
+    height: 0.5px;
+    background: #00A863;
+    border: solid 0px
+}
+
+.sulmyeong {
+    margin-top: -3px;
+    width: 214px;
+    height: 45px;
+    color: #00A863;
+    font-family: "Pretendard";
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.45px;
+}
+
+.sun-2 {
+    margin-top: 69px;
+    margin-left: 23px;
+    width: 374px;
+    height: 1px;
+    opacity: 0.5;
+    background: #00A863;
+}
+
+p {
+    margin-top: 18px;
+    color: #00A863;
+    text-align: center;
+    font-family: "Pretendard";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 166.836%; /* 20.02px */
+    letter-spacing: -0.96px;
+    opacity: 0.5;
+}
+
+.button1 {
+    margin-top: 20px;
+    margin-left: 23px;
+    width: 384px;
+    height: 51px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    border: solid 0px #00A863;
+    background: #00A863;
+    cursor: pointer;
+    position: absolute;
+}
+
+
+/* test */
+/*
+.test-1 {
+    margin-top: 533px;
+    margin-left: 23px;
+    width: 147px;
+    height: 171px;
+    flex-shrink: 0;
+    fill: #F6F6F6;
+    border: solid 1px #00A863;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    position: absolute;
+}*/
+
+
+
+
+
+
+
+
+/*
+
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+*/
+/*
+#box{
+    margin-top: 315px;
+    margin-left: -400px;
+}
+
+.boxs{
+    width: 384px;
+    height: 170.9px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    border: 0.3px solid #FF2424;
+    margin-top: 20px;
+}
+
+.svgMBox{
+    margin-left: -1px;
+    margin-top: -1px;
+}
+
+.boxImg{
+    width: 148px;
+    height: 172.5px;
+    margin-left: -150px;
+    border-radius: 40px;
+    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+    flex-shrink: 0;
+}
+
+.iconBox{
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #FF2424;
+    margin-top: -155px;
+    margin-left: 160px;
+}
+
+.iconImg{
+    width: 33px;
+    height: 33px;
+    flex-shrink: 0;
+    margin-top: 13px;
+    margin-left: 11px;
+}
+
+*/
+
+
+
+</style>
+
+<body>
+<div class="wall"></div>
+
+<!--
+<div class="side">
+  <div class="select"><img src="images/store.png" alt="" class="img1"></div><p class="text">나의 가게 현황</p>
+  <hr class="sideline">
+  <div class="select"><img src="images/draw.png" alt="" class="img1"></div><p class="text">가게 정보 수정</p>
+  <hr class="sideline">
+  <div class="select"><img src="images/eye.png" alt="" class="img1"></div><p class="text">노출 수</p>
+  <hr class="sideline">
+  <div class="select"><img src="images/help-web-button (1).png" alt="" class="img1"></div><p class="text">사용 방법</p>
+</div>-->
+
+<div class="bottom-wall"></div>
+<div class="bottom-box">
+    <div>
+        <img src="images/store.png" class="bar" alt="" style="width: 30px; height: 30px; margin-left: 43px;">
+        <h2 class="bar-content" style="margin-left: 20px;">나의 가게 현황</h2>
+    </div>
+    <div>
+        <img src="images/draw.png" class="bar" alt="" style="width: 30px; height: 30px; margin-left: 16px;margin-right: 7px;">
+        <h2 class="bar-content" style="margin-left: -7.5px;margin-top: 9px;">가게 정보 수정</h2>
+    </div>
+    <div>
+        <img src="images/eye.png" class="bar" alt="" style="width: 37px; height: 38px; margin-right: 19px;padding-top:-4px;">
+        <h2 class="bar-content" style="margin-left: -19px;margin-top: 2px;">노출 수</h2>
+    </div>
+    <div>
+        <img src="images/help-web-button (1).png" class="bar" alt="" style="width: 26px; height: 26px; margin-right: 41px;padding-top:3px;">
+        <h2 class="bar-content" style="margin-left: -40px;">사용 방법</h2>
+    </div>
+</div>
+
+
+
+<div class="window">
+    <div class="backbox">
+        <div class="back" onclick="location.href='cash-1.html'">&lt;</div>
+        <div class="my">
+            홍보/수정하기
+        </div>
+    </div>
+
+
+    <div class="tl">
+        <div class="example"><span>예시 1</span></div>
+        <div class="container">
+            <img src="images/image 2.png" class="first-img" alt="">
+            <h2 th:text="${board.jpname}"></h2>
+            <h4 th:text="${board.jplocation}"></h4>
+        </div>
+
+        <div class="example"><span>예시 1</span></div>
+        <div class="sakak">
+            <img src="images/image 2.png" class="boximg" alt="">
+            <div class="nemo">
+                <img src="images/fish.png" class="icon-img" alt="">
+                <div class="title" th:text="${board.jpname}"><span class="number"th:text="${board.jpnum}"></span></div>
+                <hr class="sun-1">
+                <div class="sulmyeong" th:text="${board.message}"></div>
+            </div>
+            <img src="images/star (4).png" class="star-img" alt="" onclick="changeStarImage()">
+        </div>
+        <hr class="sun-2">
+        <p>해당 디자인으로 홍보물이 게시될 예정입니다.<br>아래 버튼을 클릭하면 광고 수수료 결제를 진행합니다.</p>
+
+        <input class="button1" type="button" value="광고 수수료 결제" style="color: #FFF;font-family: Pretendard;font-size: 20px;font-style: normal;font-weight: 600;line-height: normal;" onclick="location.href='boardcash-3.html'">
+    </div>
+
+
+    <script>
+      let starImageCounter = 4; // 현재 이미지 카운터 설정
+
+      function changeStarImage() {
+          starImageCounter = (starImageCounter === 4) ? 5 : 4; // 번갈아가며 카운터 변경
+          const starImgElement = document.querySelector(".star-img");
+          starImgElement.src = `images/star (${starImageCounter}).png`; // 이미지 변경
+      }
+      </script>
+
+</div>
+
+
+
+</body>
+</html>

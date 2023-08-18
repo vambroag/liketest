@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cash-3.css" type="text/css">
+  <link href="images/logo.png" rel="shortcut icon" type="image/x-icon">
+  <title>준비, 시작!</title>
+</head>
+
+<style>
+  body {
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    min-width: 100%;
+    position: relative;
+    font-family: "Pretendard";
+    margin: 0 auto;
+}
+
+.wall {
+    width: 100%;
+    height: 311px;
+    flex-shrink: 0;
+    background: #00A863;
+    position: relative; /* 추가 */
+    z-index: 0;
+}
+
+.bottom-wall {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 6rem;
+    background: #F1F1F1;
+    position: fixed; /* 추가 */
+    z-index: 1;
+}
+
+.bottom-box {
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    height: 6rem;
+    width: 430px;
+    height: 84px;
+    background: #F1F1F1;
+    position: fixed; /* 추가 */
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bar {
+    margin-top: 7px;
+    cursor: pointer;
+}
+
+.bar-content {
+    margin-top: 10px;
+    color: #000;
+    font-family: "Pretendard";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.42px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.window {
+    min-height: 120vh;
+    padding-bottom: 100px;
+    width: 430px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    padding-bottom: 25vh;
+}
+
+.backbox{
+    background: #00A863;
+    width: 430px;
+    height: 311px;
+    position: absolute;
+    top: 0; /* 추가 */
+    left: 50%; /* 추가 */
+    transform: translateX(-50%); /* 추가 */
+    z-index: 0; /* 추가 */
+}
+
+.my {
+    position: absolute;
+    top: 31px;
+    left: 46px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1px;
+    color: #ffffff;
+}
+
+.back {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 23px;
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+
+
+/* 기본 세팅 */
+
+.t0 {
+    margin-top: 108px;
+    width: 384px;
+    height: 110px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.09);
+    position: absolute;
+}
+
+.profile {
+    margin-top: 13px;
+    margin-left: 23px;
+    width: 83px;
+    height: 83px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #D9D9D9;
+    position: absolute;
+}
+
+.profile-title {
+    color: #00A863;
+    font-family: "Pretendard";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    padding-top: 23px;
+    padding-left: 128px;
+    position: absolute;
+}
+
+.profile-sulmyeong {
+    color: #00A863;
+    font-family: "Pretendard";
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.45px;
+    padding-top: 50px;
+    padding-left: 128px;
+    position: absolute;
+}
+
+
+.tl {
+    margin-top: 246px;
+    width: 384px;
+    height: 478px;
+    flex-shrink: 0;
+    position: absolute;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 4px 8px 1px rgba(0, 0, 0, 0.09);
+}
+
+.rect {
+    text-align: center;
+    color: #FFF;
+    font-weight: 700;
+    margin-top: 19px;
+    margin-left: 335px;
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    background-color: #00A863;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.card-img {
+    margin-top: 0px;
+    margin-left: 151px;
+    width: 82px;
+    height: 130px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #D9D9D9;
+}
+
+.sun {
+    margin-top: 19px;
+    width: 311px;
+    height: 1px;
+    opacity: 0.5;
+    background: #00A863;
+}
+
+p {
+    margin-left: 52px;
+    color: #00A863;
+    font-family: "Pretendard";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.6px;
+}
+
+span {
+    margin-left: 166px;
+    color: #00A863;
+    font-family: "Pretendard";
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.38px;
+}
+
+.info {
+    margin-top: 22px;
+    color: #00A863;
+    font-family: "Pretendard";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.6px;
+}
+
+.card-info {
+    color: #00A863;
+    font-family: "Pretendard";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.24px;
+}
+
+.btn {
+    margin-left: 54px;
+    margin-top: 20px;
+    background-color: #FFF;
+    width: 276px;
+    height: 39px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #00A863;
+    cursor: pointer;
+}
+
+.warn-box {
+    margin-top: 750px;
+    margin-bottom: 56px;
+    width: 384px;
+    height: 166px;
+    flex-shrink: 0;
+    position: absolute;
+}
+
+.warn {
+    width: 19px;
+    height: 19px;
+    margin-left: 0px;
+    flex-shrink: 0;
+    display: inline-block; /* 인라인 블록 요소로 설정하여 이미지를 같은 줄에 표시 */
+    vertical-align: middle;
+}
+
+.warn-content {
+    color: #D9D9D9;
+    font-family: "Pretendard";
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.55px;
+    display: inline-block; /* 인라인 블록 요소로 설정하여 텍스트를 같은 줄에 표시 */
+    vertical-align: middle;
+}
+
+
+.button1 {
+    margin-top: 1000px;
+    margin-bottom: 700px;
+    width: 384px;
+    height: 51px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    border: solid 0px #00A863;
+    background: #00A863;
+    cursor: pointer;
+    position: absolute;
+}
+
+
+/* test */
+/*
+.test-1 {
+    margin-top: 533px;
+    margin-left: 23px;
+    width: 147px;
+    height: 171px;
+    flex-shrink: 0;
+    fill: #F6F6F6;
+    border: solid 1px #00A863;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    position: absolute;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+/*
+#box{
+    margin-top: 315px;
+    margin-left: -400px;
+}
+
+.boxs{
+    width: 384px;
+    height: 170.9px;
+    flex-shrink: 0;
+    border-radius: 40px;
+    border: 0.3px solid #FF2424;
+    margin-top: 20px;
+}
+
+.svgMBox{
+    margin-left: -1px;
+    margin-top: -1px;
+}
+
+.boxImg{
+    width: 148px;
+    height: 172.5px;
+    margin-left: -150px;
+    border-radius: 40px;
+    background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+    flex-shrink: 0;
+}
+
+.iconBox{
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #FF2424;
+    margin-top: -155px;
+    margin-left: 160px;
+}
+
+.iconImg{
+    width: 33px;
+    height: 33px;
+    flex-shrink: 0;
+    margin-top: 13px;
+    margin-left: 11px;
+}
+
+*/
+
+
+
+</style>
+
+<body>
+<div class="wall"></div>
+
+<div class="bottom-wall"></div>
+<div class="bottom-box">
+  <div>
+    <img src="images/store.png" class="bar" alt="" style="width: 30px; height: 30px; margin-left: 43px;">
+    <h2 class="bar-content" style="margin-left: 20px;">나의 가게 현황</h2>
+  </div>
+  <div>
+    <img src="images/draw.png" class="bar" alt="" style="width: 30px; height: 30px; margin-left: 16px;margin-right: 7px;">
+    <h2 class="bar-content" style="margin-left: -7.5px;margin-top: 9px;">가게 정보 수정</h2>
+  </div>
+  <div>
+    <img src="images/eye.png" class="bar" alt="" style="width: 37px; height: 38px; margin-right: 19px;padding-top:-4px;">
+    <h2 class="bar-content" style="margin-left: -19px;margin-top: 2px;">노출 수</h2>
+  </div>
+  <div>
+    <img src="images/help-web-button (1).png" class="bar" alt="" style="width: 26px; height: 26px; margin-right: 41px;padding-top:3px;">
+    <h2 class="bar-content" style="margin-left: -40px;">사용 방법</h2>
+  </div>
+</div>
+
+<div class="window">
+  <div class="backbox">
+    <div class="back" onclick="location.href='cash-2.html'">&lt;</div>
+    <div class="my">
+      홍보/수정하기
+    </div>
+  </div>
+
+  <div class="t0">
+    <img src="" class="profile" alt="">
+    <h2 class="profile-title" th:text="${board.jpname}"></h2>
+    <h4 class="profile-sulmyeong">쭈꾸미가 맛있고 사장님이 친절한 집</h4>
+  </div>
+
+
+  <div class="tl">
+    <div class="rect">+</div>
+    <img src="images/card.png" class="card-img" alt="">
+    <hr class="sun">
+    <p>결제금액<span>100,000</span></p>
+    <hr class="sun">
+    <p class="info">결제일시<span class="card-info">2023.08.13</span></p>
+    <p class="info">결제카드<span class="card-info">신한카드</span></p>
+    <p class="info">카드번호<span class="card-info">76120200046361</span></p>
+    <input class="btn" type="button" value="휴대폰 인증" style="color: #00A863;font-family: Pretendard;font-size: 13px;font-style: normal;font-weight: 400;line-height: normal;letter-spacing: -0.65px;">
+  </div>
+
+  <div class="warn-box">
+    <img src="images/exclamation-mark (1).png" class="warn" alt="">
+    <div class="warn-content">결제용 카드는 신용카드/체크카드/법인카드/개인카드 모두 등록 가능합니다.</div><br>
+    <img src="images/exclamation-mark (1).png" class="warn" alt="">
+    <div class="warn-content" style="line-height:20px;padding-top:20px">법인카드 등록이 어려운 경우, 개인카드를 통해 비용을 처리 또는 추후 법인<br>카드로 변경 후 재결제할 수 있습니다.</div><br>
+    <img src="images/exclamation-mark (1).png" class="warn" alt="">
+    <div class="warn-content">결제용 카드는 신용카드/체크카드/법인카드/개인카드 모두 등록 가능합니다.</div>
+    <hr class="sun" style="width: 384px;margin-top:82px">
+    <p style="color: #00A863;margin-left:-11.5px;text-align: center;font-family: Pretendard;font-size: 12px;font-style: normal;font-weight: 500;line-height: 166.836%; /* 20.02px */letter-spacing: -0.96px;">아래 버튼을 클릭하면 광고 수수료가 결제됩니다</p>
+  </div>
+
+  <input class="button1" type="button" value="광고 수수료 결제" style="color: #FFF;font-family: Pretendard;font-size: 20px;font-style: normal;font-weight: 600;line-height: normal;" onclick="location.href='boardcash-4.html'">
+
+
+</div>
+</body>
+</html>

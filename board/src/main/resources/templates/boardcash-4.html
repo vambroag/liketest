@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="cash-4.css" type="text/css">
+  <link href="images/logo.png" rel="shortcut icon" type="image/x-icon" width="16px" height="16px">
+  <title>준비, 시장!</title>
+</head>
+
+<style>
+  body {
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+    min-width: 100%;
+    position: relative;
+    margin: 0;
+}
+
+.wall {
+    width: 100%;
+    height: 84px;
+    flex-shrink: 0;
+    background: #00A863;
+    position: relative; /* 추가 */
+    z-index: 1;
+}
+
+.bottom-wall {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 6rem;
+    background: #F1F1F1;
+    position: fixed; /* 추가 */
+    z-index: 1;
+}
+
+.bottom-box {
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    height: 6rem;
+    width: 430px;
+    height: 84px;
+    background: #F1F1F1;
+    position: fixed; /* 추가 */
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bar {
+    margin-top: 7px;
+    cursor: pointer;
+}
+
+.bar-content {
+    margin-top: 10px;
+    color: #000;
+    font-family: "Pretendard";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.42px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.window {
+    min-height: 130vh;
+    width: 430px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    position: absolute;
+}
+
+.backbox{
+    background: #00A863;
+    width: 430px;
+    height: 84px;
+    position: absolute;
+    top: 0; /* 추가 */
+    left: 50%; /* 추가 */
+    transform: translateX(-50%); /* 추가 */
+    z-index: 2; /* 추가 */
+  }
+
+.hongbosujung {
+    position: absolute;
+    top: 31px;
+    left: 46px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -1px;
+    color: #ffffff;
+}
+
+.back {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-left: 23px;
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.input {
+    margin-top: 520px;
+    margin-left: 133px;
+    color: #00A863;
+    font-family: "Pretendard";
+    font-size: 41px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -3.294px;
+    position: absolute;
+}
+
+img {
+    margin-top: 441px;
+    margin-left: 182.88px;
+    width: 64.235px;
+    height: 64.235px;
+    flex-shrink: 0;
+}
+
+
+.button1 {
+    margin-top: 854px;
+    margin-left: 23px;
+    width: 384px;
+    height: 51px;
+    flex-shrink: 0;
+    border: solid 0px #00A863;
+    border-radius: 40px;
+    background: #00A863;
+    cursor: pointer;
+    position: absolute;
+}
+
+</style>
+
+<body>
+
+<div class="wall"></div>
+
+<div class="bottom-wall"></div>
+<div class="bottom-box">
+  <div>
+    <img src="images/store.png" class="bar" alt="" style="width: 30px; height: 30px; margin-left: 43px;">
+    <h2 class="bar-content" style="margin-left: 20px;">나의 가게 현황</h2>
+  </div>
+  <div>
+    <img src="images/draw.png" class="bar" alt="" style="width: 30px; height: 30px; margin-left: 16px;margin-right: 7px;">
+    <h2 class="bar-content" style="margin-left: -7.5px;margin-top: 9px;">가게 정보 수정</h2>
+  </div>
+  <div>
+    <img src="images/eye.png" class="bar" alt="" style="width: 37px; height: 38px; margin-right: 19px;padding-top:-4px;">
+    <h2 class="bar-content" style="margin-left: -19px;margin-top: 2px;">노출 수</h2>
+  </div>
+  <div>
+    <img src="images/help-web-button (1).png" class="bar" alt="" style="width: 26px; height: 26px; margin-right: 41px;padding-top:3px;">
+    <h2 class="bar-content" style="margin-left: -40px;">사용 방법</h2>
+  </div>
+</div>
+
+<div class="window">
+  <div class="backbox">
+    <div class="back" onclick="location.href='cash-3.html'">&lt;</div>
+    <div class="hongbosujung">
+      홍보/수정하기
+    </div>
+  </div>
+
+  <img src="images/checked.png" alt="">
+  <h2 class="input">결제 완료</h2>
+
+  <input class="button1" type="button" value="메인 홈으로 가기" style="color: #FFF;font-family: Pretendard;font-size: 20px;font-style: normal;font-weight: 600;line-height: normal;">
+
+
+</div>
+</body>
+</html>
